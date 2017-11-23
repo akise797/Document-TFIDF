@@ -1,0 +1,116 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+body {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  background-color: #cfe0f1;
+  color: rgb(0, 0, 0);
+  height: 100%;
+  margin: 0px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 0px;
+}
+h1 {
+  margin-top: 0px;
+}
+table {
+  white-space: nowrap;
+}
+li {
+  list-style: none;
+}
+th, td {
+  text-align: center;
+}
+input {
+  width: 400px;
+  height: 30px;
+  margin: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: #6a737c;
+  border: none;
+  outline: none;
+  box-shadow: 0px 1px 1px #6a737c;
+  color: white;
+}
+button {
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  width:  32px;
+  height: 32px;
+  margin: 1px;
+  outline: none;
+  box-shadow: 0px 1px 1px darkslategrey;
+  vertical-align: bottom;
+}
+.addDocButton {
+  background-color: dodgerblue;
+  color: whitesmoke;
+}
+.removeDocButton {
+  background-color: #ff5757;
+  color: whitesmoke;
+}
+.token {
+  background-color: lightgrey;
+  box-shadow: 0px 1px 1px darkslategrey;
+  color: darkslategrey;
+}
+.count {
+  background-color: plum;
+  box-shadow: 0px 1px 1px darkslategrey;
+  color: darkslategrey;
+}
+.tf {
+  background-color: lightblue;
+  box-shadow: 0px 1px 1px darkslategrey;
+  color: darkslategrey;
+}
+.idf {
+  background-color: lightgreen;
+  box-shadow: 0px 1px 1px darkslategrey;
+  color: darkslategrey;
+}
+.tfIdf {
+  background-color: lightpink;
+  box-shadow: 0px 1px 1px darkslategrey;
+  color: darkslategrey;
+}
+.matrixContainer {
+  overflow: auto;
+  width: 100%;
+}
+.matrixContainerSpacer {
+  padding-bottom: 100px;
+}
+#app {
+  position: relative;
+  min-height: 100%;
+}
+#logoContainer {
+  width: 100%;
+  text-align: right;
+  position: absolute;
+  bottom: 0px;
+  padding-right: 5px;
+}
+#logo {
+  width: 100px;
+  height: 100px;
+}
+::-webkit-input-placeholder {
+  color: #c6e2ff;
+}
+::-moz-placeholder {
+  color: #c6e2ff;
+}
+:-ms-input-placeholder {
+  color: #c6e2ff;
+}
+:-moz-placeholder {
+  color: #c6e2ff;
+}

@@ -1,7 +1,149 @@
-<!DOCTYPE html>
-<html>
-<body>
-<h1>Document TFIDF</h1>
-<p>I'm hosted with GitHub Pages.</p>
-</body>
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Search Engine: TF-IDF</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+  </head>
+  <body>
+    <div id="app">
+      <h1>Search Engine: TF-IDF</h1>
+      <h2>Documents</h2>
+      <ul>
+        <li v-for="(doc, index) in docs">
+          <b>Doc {{index + 1}}:</b> <input placeholder="Input a document." v-bind:id="doc.id" v-model="doc.text">
+          <button class="removeDocButton" v-on:click="removeDoc" v-bind:docId="doc.id" title="Remove Doc">-</button>
+        </li>
+        <button class="addDocButton" v-on:click="addDoc" title="Add Doc">+</button>
+      </ul>
+      <ul>
+        <li><b>Query:</b> <input placeholder="Input a query." v-model="query"></li>
+      </ul>
+      <template v-if="docs.length">
+        <template v-if="queryTokens.length">
+          <template v-if="tfIdfVsmRankedDocs.length">
+            <h2>Docs Ranked by TF-IDF</h2>
+            <ul>
+              <template v-for="tfIdfRankedDoc in tfIdfVsmRankedDocs">
+                <li><b>Doc {{tfIdfRankedDoc.index + 1}}:</b> {{tfIdfRankedDoc.text}}</li>
+              </template>
+            </ul>
+          </template>
+          <template v-if="cosineSimilarities.length">
+            <h2>Nilai Kemiripan TF-IDF</h2>
+            <ul>
+              <template v-for="(cosineSimilarity, index) in cosineSimilarities">
+                <li><b>Doc {{index + 1}}:</b> {{cosineSimilarity.toFixed(2)}}</li>
+              </template>
+            </ol>
+          </template>
+        </template>
+        <template v-if="docsVectors.length && dictionary.length">
+          <h2>Token Matrix</h2>
+          <div class="matrixContainer">
+            <table>
+              <tr>
+                <td></td>
+                <td>
+                  <b>Token</b>
+                </td>
+                <template v-for="word in dictionary">
+                  <th class="token">{{word}}</th>
+                </template>
+              </tr>
+              <template v-for="(docVector, index) in docsVectors">
+                <tr>
+                  <td rowspan="5">
+                    <b>Doc {{index + 1}}</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td><b>Jumlah</b></td>
+                  <template v-for="count in docVector[0]">
+                    <td class="count">{{count}}</td>
+                  </template>
+                </tr>
+                <tr>
+                  <td><b>TF</b></td>
+                  <template v-for="tf in docVector[1]">
+                    <td class="tf">{{tf.toFixed(2)}}</td>
+                  </template>
+                </tr>
+                <tr>
+                  <td>
+                    <b>IDF</b>
+                  </td>
+                  <template v-for="idf in docVector[2]">
+                    <td class="idf">{{idf.toFixed(2)}}</td>
+                  </template>
+                </tr>
+                <tr>
+                  <td>
+                    <b>TF-IDF</b>
+                  </td>
+                  <template v-for="tfIdf in docVector[3]">
+                    <td class="tfIdf">{{tfIdf.toFixed(2)}}</td>
+                  </template>
+                </tr>
+                <tr>
+                  <template v-for="tfIdf in docVector[3]">
+                    <td></td>
+                  </template>
+                </tr>
+                <tr>
+                  <template v-for="tfIdf in docVector[3]">
+                    <td></td>
+                  </template>
+                </tr>
+              </template>
+              <template v-if="queryTokens">
+                <tr>
+                  <td rowspan="7">
+                    <b>Query</b>&nbsp;
+                  </td>
+                </tr>
+                <tr>
+                  <template v-for="count in queryCountVector">
+                    <td></td>
+                  </template>
+                </tr>
+                <tr>
+                  <template v-for="count in queryCountVector">
+                    <td></td>
+                  </template>
+                </tr>
+                <tr>
+                  <td><b>Count</b></td>
+                  <template v-for="count in queryCountVector">
+                    <td class="count">{{count}}</td>
+                  </template>
+                </tr>
+                <tr>
+                  <td><b>TF</b></td>
+                  <template v-for="tf in queryTfVector">
+                    <td class="tf">{{tf.toFixed(2)}}</td>
+                  </template>
+                </tr>
+                <tr>
+                  <td><b>IDF</b></td>
+                  <template v-for="idf in queryIdfVector">
+                    <td class="idf">{{idf.toFixed(2)}}</td>
+                  </template>
+                </tr>
+                <tr>
+                  <td><b>TF-IDF</b>&nbsp;</td>
+                  <template v-for="tfIdf in queryTfIdfVector">
+                    <td class="tfIdf">{{tfIdf.toFixed(2)}}</td>
+                  </template>
+                </tr>
+              </template>
+            </table>
+          </div>
+          <div class="matrixContainerSpacer">&nbsp;</div>
+        </template>
+      </template>
+    </div>
+    <script src="vue.js"></script>
+    <script src="index.js"></script>
+  </body>
 </html>
