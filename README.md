@@ -5,5 +5,5 @@
 
 This Project to create Document Checker Using TF-IDF Algorithm and Cosine Similarty Matrix
 
-- [Kaggle challenge](https://www.kaggle.com/c/DontGetKicked): Predict if a car purchased at auction is a unfortunate purchase. [[folder](https://github.com/ethen8181/machine-learning/blob/master/projects/data_challenge/)]
+For Live Website. [[Here](https://akise797.github.io/Document-TFIDF/)]
 
